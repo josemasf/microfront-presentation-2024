@@ -10,25 +10,25 @@
     "slidev": ">=0.19.3"
   },
   "scripts": {
-    "build": "slidev build slides.md",
+    "build": "slidev build slides.md --presenter=qwerty1234",
     "dev": "slidev slides.md --open",
     "export": "slidev export slides.md",
     "screenshot": "slidev export slides.md --format png"
   },
   "dependencies": {
-    "@slidev/types": "^0.43.2",
-    "@tabler/icons-vue": "^2.34.0",
+    "@slidev/types": "^0.47.5",
+    "@tabler/icons-vue": "^2.47.0",
     "codemirror-theme-vars": "^0.1.2",
     "prism-theme-vars": "^0.2.4",
-    "theme-vitesse": "^0.7.3",
+    "theme-vitesse": "^0.7.5",
     "vue-rewards": "^1.0.1"
   },
   "devDependencies": {
-    "@iconify-json/logos": "^1.1.37",
-    "@iconify-json/mdi": "^1.1.52",
-    "@iconify-json/twemoji": "^1.1.12",
-    "@slidev/cli": "^0.43.2",
-    "playwright-chromium": "1.38.1"
+    "@iconify-json/logos": "^1.1.42",
+    "@iconify-json/mdi": "^1.1.64",
+    "@iconify-json/twemoji": "^1.1.15",
+    "@slidev/cli": "^0.47.5",
+    "playwright-chromium": "1.42.1"
   },
   "//": "Learn more: https://sli.dev/themes/write-a-theme.html",
   "slidev": {

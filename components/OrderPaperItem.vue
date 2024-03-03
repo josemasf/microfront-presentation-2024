@@ -24,6 +24,7 @@ import Clipboard from '../assets/svg/Clipboard.vue';
 import ChartPie from '../assets/svg/ChartPie.vue';
 import ChartAreas from '../assets/svg/ChartAreas.vue';
 import timerCogOutline from '../assets/svg/TimerCogOutline.vue';
+import Framework from '../assets/svg/Framework.vue';
 
 
 
@@ -64,6 +65,8 @@ const svgComponent = computed(() => {
             return ChartAreas;
         case 'timer':
             return timerCogOutline;
+        case 'framework':
+            return Framework;
         default:
             return Clipboard;
     }

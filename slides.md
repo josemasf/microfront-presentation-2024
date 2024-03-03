@@ -287,9 +287,20 @@ HTML extendido que permite a nodos extremos renderizar ESI (Edge Side Includes),
   <img src="/assets/ikea.svg" class="" />  
 
 </template>
-
-
+---
+layout: center
+class: "text-center"
+---
 # Meta framework
+
+
+
+<div class="flex justify-center items-center ">
+  <OrderPaperItem icon="framework" title="Meta framework" body="Heramientas para construir microfrontend" class="text-dark bg-gray-400 rounded max-w-100 p-10 border-t border-t-red border-t-2"/>
+
+
+</div>
+
 
 ---
 layout: iframe-right
@@ -310,13 +321,48 @@ Muy común y con muchas recomendaciones, es de pago.
 
 La Federación de Módulos es una característica de Webpack que permite a una aplicación JavaScript cargar de manera dinámica código de otra aplicación en tiempo de ejecución. Esto significa que puedes tener múltiples aplicaciones independientes que comparten código entre sí, pero cada una de ellas puede ser desarrollada y desplegada de manera independiente.
 
-Permite compartir dependencias entre aplicaciones
+Permite compartir dependencias core entre aplicaciones.
+
+```js
+//vite.config
+export default defineConfig({
+  plugins: [
+    vue(),
+    federation({
+        name: 'host-app',
+        remotes: {
+            remote_app: "http://localhost:4173/assets/dt-vue2.js",
+        },
+        shared: ['vue']
+    })
+  ], ...
+})
+```
 
 ---
 
 ## Single SPA
 
-Se crea un orquestador que controla el resto de Frontends y mediente un builder se generan los modulos y se unen
+Se crea un orquestador que controla el resto de Frontends y mediente un builder se generan los modulos y se unen.
+
+```js
+registerApplication({
+  name: "@vue-mf/dogs-dashboard",
+  app: () => System.import("@vue-mf/dogs-dashboard"),
+  activeWhen: "/view-doggos",
+});
+```
+
+```js
+{
+  "imports": {
+    "@react-mf/navbar": "https://localhost:8080/react-mf-navbar.js",
+    "@react-mf/planets": "https://react.microfrontends.app/planets/~/react-mf-planets.js",
+    "@react-mf/things": "https://react.microfrontends.app/things/~/react-mf-things.js"
+    "@vue-mf/dogs-dashboard": "https://react.microfrontends.app/things/~/vue-mf-dogs-dashboard.js"
+  }
+}
+```
 
 ---
 
@@ -344,11 +390,41 @@ class: "text-center"
 </div>
 
 ---
+layout: image-right
+
+# the image source
+image: /assets/islands-architecture.png
+backgroundSize: 100% 90%
+---
 
 ## Islands Architecture
 
 En la arquitectura de Islas, una página web se compone de "islas" de componentes interactivos que se cargan de forma diferida. Esto significa que el HTML y CSS se cargan primero, y luego los componentes interactivos (generalmente escritos en JavaScript) se cargan y se hidratan solo cuando son necesarios.
 
+[Islands Architecture - Katie Sylor-Miller](https://jasonformat.com/islands-architecture/)
+
+
+---
+
+## Puntos fuertes de las íslas
+
+Aunque la mayoría de los desarrolladores se quedarán con un solo framework de UI, Astro admite múltiples frameworks en el mismo proyecto. Esto te permite:
+
+- Escoger el framework que sea mejor para cada componente.
+- Aprender un nuevo framework sin necesidad de iniciar un nuevo proyecto.
+- Colaborar con otros incluso cuando trabajan en diferentes frameworks.
+- Convertir gradualmente un sitio existente a otro framework sin tiempo de inactividad.
+
+
+---
+
+## Conclusión
+
+### Las íslas nos permiten tener un monolíto rompiendo la condición de una sólo framework/libreria en el front
+
+En Astro, depende de ti como desarrollador decirle explícitamente a Astro cuáles componentes de la página deben ejecutarse también en el navegador. Astro solo hidratará exactamente lo que se necesita en la página y dejará el resto de tu sitio como HTML estático.
+
+<logos-astro class="w-full h-40 p-10" />
 
 ---
 layout: center
